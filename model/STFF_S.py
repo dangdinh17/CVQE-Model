@@ -127,20 +127,6 @@ class STFF_S(nn.Module):
 
         return torch.stack(Enhanced, dim=1)
 
-if __name__ == "__main__":
-    # torch.cuda.set_device(0)
-    net = STFF_S().cuda()
-
-    from thop import profile
-
-    with torch.no_grad():
-        input = torch.randn(7, 1, 1280, 720).cpu()
-        output = net(input)
-        print(output.shape)
-        flops, params = profile(net, inputs=(input,))
-        total = sum([param.nelement() for param in net.parameters()])
-        print('Number of params: %.2fM' % (total / 1e6))
-        print('Number of FLOPs: %.2fTFLOPs' % (flops / (1e9 * 1024)))
 
 
 
