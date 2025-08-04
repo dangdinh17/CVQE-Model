@@ -1,8 +1,3 @@
-# *STFF: Spatio-Temporal and Frequency Fusion for Video Compression Artifact Removal*
-
-
-The *PyTorch* implementation for the [STFF: Spatio-Temporal and Frequency Fusion for
-Video Compression Artifact Removal] which will be accepted by [IEEE Transactions on Broadcasting].
 
 
 ## 1. Pre-request
