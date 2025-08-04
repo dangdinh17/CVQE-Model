@@ -1,8 +1,6 @@
 import torch
 import numpy as np
 import torch.nn as nn
-# import sys, os
-# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from model.FEA import FEA
 from model.QE_HFERB1_RDB1_HFERB1_Relu import QE_HFERB_RDCAB
