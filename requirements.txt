@@ -20,3 +20,4 @@ tabulate
 termcolor
 timm
 thop
+ptflops
