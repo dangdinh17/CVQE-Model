@@ -8,7 +8,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 import utils
 import dataset
 from collections import OrderedDict
-from model.STFF_L import STFF_L
+from model import *
 
 
 def receive_arg():
@@ -125,7 +125,10 @@ def main():
     # ==========
     # create model    ,find_unused_parameters=True
     # ==========
-    model = STFF_L()
+    if 'STFF' in opts_dict['train']['exp_name']:
+        model = STFF_L()
+    else:
+        model = OVQE()
     model = model.to(rank)
     if opts_dict['train']['is_dist']:
         model = DDP(model, device_ids=[rank], find_unused_parameters=True)

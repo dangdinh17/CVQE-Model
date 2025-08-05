@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+from torchinfo import summary
 import torch.nn as nn
 
 from model.FEA import FEA
@@ -126,8 +127,20 @@ class STFF_S(nn.Module):
         return torch.stack(Enhanced, dim=1)
 
 
+if __name__ == "__main__":
+    # torch.cuda.set_device(3)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    net = STFF_S().to(device)
 
+    from thop import profile
 
+    with torch.no_grad():
+        input = torch.randn(1, 1, 640, 360).to(device)
+        flops, params = profile(net, inputs=(input,))
+        total = sum([param.nelement() for param in net.parameters()])
+        print('Number of params: %.2fM' % (total / 1e6))
+        print('Number of FLOPs: %.2fTFLOPs' % (flops / (1e9 * 1024)))
+        print(summary(net, input_size=(1, 1, 640, 360), device=device))
 
 
 

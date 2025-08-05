@@ -9,7 +9,7 @@ import glob
 import os.path as op
 import pandas as pd
 import time
-from model.STFF_L import STFF_L
+from model import *
 
 def get_resolution(filename):
     match = re.search(r'_(\d+)x(\d+)_', op.basename(filename))

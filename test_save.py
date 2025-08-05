@@ -10,7 +10,7 @@ from tqdm import tqdm
 import cv2
 import os
 import re
-from model.STFF_L import STFF_L
+from model import *
 
 ckp_path = './exp/STFF_QP37_CVQE_Loss_7_600000.pth'
 gt_dir = './data/MFQEV2/test_18/raw'
